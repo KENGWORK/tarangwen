@@ -47,10 +47,14 @@ export default function ScheduleSetup({ shifts, onAddShift, onDeleteShift, onCle
   const shiftsOnSelectedDay = shifts.filter(s => s.dateString === selectedDateStr);
 
   const quickTimes = [
+    { label: '7-8', value: '7-8' },
     { label: '7-16', value: '7-16' },
     { label: '8-16', value: '8-16' },
-    { label: '10-23', value: '10-23' },
-    { label: '9-18', value: '9-18' },
+    { label: '16-20', value: '16-20' },
+    { label: '9-16', value: '9-16' },
+    { label: '10-16', value: '10-16' },
+    { label: '8-17', value: '8-17' },
+    { label: '8-18', value: '8-18' },
   ];
 
   const handleAddShiftSubmit = (e: React.FormEvent) => {
