@@ -197,7 +197,7 @@ export default function App() {
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-[var(--theme-periwinkle)]/20 rounded-full filter blur-[120px] pointer-events-none" />
 
       {/* Main Responsive Layout wrapper: Show simulated iphone on desktop/tablet, but let it go full bleed on mobile devices */}
-      <div className="w-full max-w-sm md:max-w-md bg-transparent rounded-none md:rounded-[55px] md:border-8 md:border-[#111] md:shadow-2xl relative overflow-hidden flex flex-col aspect-auto h-screen md:h-[912px] md:ring-1 md:ring-gray-300 transition-all duration-500 bg-white">
+      <div className="w-full max-w-full md:max-w-md bg-transparent rounded-none md:rounded-[55px] md:border-8 md:border-[#111] md:shadow-2xl relative overflow-hidden flex flex-col aspect-auto h-screen md:h-[912px] md:ring-1 md:ring-gray-300 transition-all duration-500 bg-white">
         
 
 
