@@ -1,0 +1,6 @@
+{
+  "name": "Pharmacist Shift Trade",
+  "description": "ระบบซื้อขายและจัดการตารางเวรของเภสัชกร โรงพยาบาลกรุงเทพพัทยา รองรับการซื้อขายเวร บันทึกตาราง และแสดงสรุปชั่วโมงทำงาน",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
