@@ -340,26 +340,83 @@ export default function ScheduleSetup({ shifts, onAddShift, onDeleteShift, onCle
             <div className="space-y-2">
               <label className="text-gray-700 text-xs font-semibold">เลือกงานหลัก/ตำแหน่ง</label>
               <div className="grid grid-cols-3 gap-1.5">
-                {POSITIONS.map((pos) => {
-                  const isSelected = positionId === pos.id;
-                  return (
-                    <button
-                      key={pos.id}
-                      type="button"
-                      onClick={() => setPositionId(pos.id)}
-                      style={{ 
-                        backgroundColor: isSelected ? pos.color : '#f3f4f6',
-                        color: isSelected ? pos.textColor : '#374151',
-                        borderColor: isSelected ? 'transparent' : '#e5e7eb'
-                      }}
-                      className={`text-[10px] font-bold py-2 px-1 rounded-lg border text-center transition-all cursor-pointer ${
-                        isSelected ? 'ring-2 ring-blue-600/20 scale-95' : 'opacity-80 hover:opacity-100'
-                      }`}
-                    >
-                      {pos.name}
-                    </button>
-                  );
-                })}
+                {/* Column 1: OPD */}
+                <div className="flex flex-col gap-1.5">
+                  {['OPD_A', 'OPD_E3', 'OPD_O8'].map((id) => {
+                    const pos = POSITIONS.find(p => p.id === id);
+                    if (!pos) return null;
+                    const isSelected = positionId === pos.id;
+                    return (
+                      <button
+                        key={pos.id}
+                        type="button"
+                        onClick={() => setPositionId(pos.id)}
+                        style={{ 
+                          backgroundColor: isSelected ? pos.color : '#f3f4f6',
+                          color: isSelected ? pos.textColor : '#374151',
+                          borderColor: isSelected ? 'transparent' : '#e5e7eb'
+                        }}
+                        className={`text-[10px] font-bold py-2 px-1 rounded-lg border text-center transition-all cursor-pointer ${
+                          isSelected ? 'ring-2 ring-blue-600/20 scale-95' : 'opacity-80 hover:opacity-100'
+                        }`}
+                      >
+                        {pos.name}
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* Column 2: IPD (IPD, HM, MR) */}
+                <div className="flex flex-col gap-1.5">
+                  {['IPD_IPD', 'IPD_HM', 'IPD_MR'].map((id) => {
+                    const pos = POSITIONS.find(p => p.id === id);
+                    if (!pos) return null;
+                    const isSelected = positionId === pos.id;
+                    return (
+                      <button
+                        key={pos.id}
+                        type="button"
+                        onClick={() => setPositionId(pos.id)}
+                        style={{ 
+                          backgroundColor: isSelected ? pos.color : '#f3f4f6',
+                          color: isSelected ? pos.textColor : '#374151',
+                          borderColor: isSelected ? 'transparent' : '#e5e7eb'
+                        }}
+                        className={`text-[10px] font-bold py-2 px-1 rounded-lg border text-center transition-all cursor-pointer ${
+                          isSelected ? 'ring-2 ring-blue-600/20 scale-95' : 'opacity-80 hover:opacity-100'
+                        }`}
+                      >
+                        {pos.name}
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* Column 3: IPD(Proud), IV, DIS */}
+                <div className="flex flex-col gap-1.5">
+                  {['IPD_PROUD', 'IV', 'DIS'].map((id) => {
+                    const pos = POSITIONS.find(p => p.id === id);
+                    if (!pos) return null;
+                    const isSelected = positionId === pos.id;
+                    return (
+                      <button
+                        key={pos.id}
+                        type="button"
+                        onClick={() => setPositionId(pos.id)}
+                        style={{ 
+                          backgroundColor: isSelected ? pos.color : '#f3f4f6',
+                          color: isSelected ? pos.textColor : '#374151',
+                          borderColor: isSelected ? 'transparent' : '#e5e7eb'
+                        }}
+                        className={`text-[10px] font-bold py-2 px-1 rounded-lg border text-center transition-all cursor-pointer ${
+                          isSelected ? 'ring-2 ring-blue-600/20 scale-95' : 'opacity-80 hover:opacity-100'
+                        }`}
+                      >
+                        {pos.name}
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
             </div>
 
