@@ -33,8 +33,11 @@ export default function TradeForm({ onAddTrade, currentMonth }: TradeFormProps) 
   const selectedPosition = POSITIONS.find(p => p.id === positionId) || POSITIONS[0];
 
   const quickTimes = [
+    { label: '7-8', value: '7-8' },
     { label: '7-9', value: '7-9' },
+    { label: '7-10', value: '7-10' },
     { label: '16-20', value: '16-20' },
+    { label: '18-20', value: '18-20' },
     { label: '20-22', value: '20-22' },
   ];
 
@@ -290,22 +293,6 @@ export default function TradeForm({ onAddTrade, currentMonth }: TradeFormProps) 
           />
         </div>
 
-        {/* Outlook Alert Toggle */}
-        <div className="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-between">
-          <div className="space-y-0.5 pr-2">
-            <p className="text-xs text-gray-800 font-bold">แจ้งเตือนผ่าน Outlook ล่วงหน้า 1 วัน</p>
-            <p className="text-[10px] text-gray-500">ระบบจะช่วยแจ้งเตือนเข้าเมลเพื่อป้องกันการลืมเวร</p>
-          </div>
-          <label className="relative inline-flex items-center cursor-pointer">
-            <input 
-              type="checkbox" 
-              checked={remindViaOutlook} 
-              onChange={(e) => setRemindViaOutlook(e.target.checked)}
-              className="sr-only peer" 
-            />
-            <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-2 peer-focus:ring-blue-600/35 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
-          </label>
-        </div>
 
         {/* Submit Button (Styled using User's custom CSS classes) */}
         <div className="flex justify-center pt-2">
