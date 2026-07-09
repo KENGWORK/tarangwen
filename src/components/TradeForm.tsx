@@ -130,7 +130,7 @@ export default function TradeForm({ onAddTrade, currentMonth }: TradeFormProps) 
                 : 'text-gray-500 hover:text-gray-700'
             }`}
           >
-            📥 ซื้อเวร (เพิ่มเวร)
+            📥 ซื้อเวร 
           </button>
           <button
             type="button"
@@ -141,14 +141,14 @@ export default function TradeForm({ onAddTrade, currentMonth }: TradeFormProps) 
                 : 'text-gray-500 hover:text-gray-700'
             }`}
           >
-            📤 ขายเวร (ลดเวร)
+            📤 ขายเวร
           </button>
         </div>
 
         {/* Date Selector */}
         <div className="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm space-y-2">
           <label className="text-gray-500 text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5">
-            <Calendar className="w-3.5 h-3.5 text-blue-600" /> วันที่ปฏิบัติงาน
+            <Calendar className="w-3.5 h-3.5 text-blue-600" /> วันที่
           </label>
           <input
             type="date"
@@ -188,7 +188,7 @@ export default function TradeForm({ onAddTrade, currentMonth }: TradeFormProps) 
 
           {/* Quick select times */}
           <div className="pt-1.5">
-            <p className="text-gray-400 text-[10px] mb-1.5 font-bold uppercase">เลือกเวลาด่วน:</p>
+            <p className="text-gray-400 text-[10px] mb-1.5 font-bold uppercase">Preset:</p>
             <div className="flex flex-wrap gap-1.5">
               {quickTimes.map((t) => (
                 <button
@@ -211,7 +211,7 @@ export default function TradeForm({ onAddTrade, currentMonth }: TradeFormProps) 
         {/* Position Selection */}
         <div className="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm space-y-3">
           <label className="text-gray-500 text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5">
-            <Bookmark className="w-3.5 h-3.5 text-pink-600" /> ตำแหน่ง / หน้างานหลัก
+            <Bookmark className="w-3.5 h-3.5 text-pink-600" /> ตำแหน่ง
           </label>
           
           <div className="grid grid-cols-3 gap-2">
@@ -315,7 +315,7 @@ export default function TradeForm({ onAddTrade, currentMonth }: TradeFormProps) 
               onChange={(e) => setPartnerName(e.target.value)}
               className="input"
             />
-            <label htmlFor="partnerInput" className="user-label">ชื่อเภสัชกรคู่ค้า (เลือกด่วนด้านล่าง)</label>
+            <label htmlFor="partnerInput" className="user-label">ชื่อ</label>
           </div>
 
           {/* Quick Partners */}
@@ -343,7 +343,7 @@ export default function TradeForm({ onAddTrade, currentMonth }: TradeFormProps) 
         <div className="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm space-y-2">
           <label className="text-gray-500 text-xs font-semibold uppercase tracking-wider">บันทึกเพิ่มเติม / สาเหตุ</label>
           <textarea
-            placeholder="เช่น ฝากป้อนเข้าระบบ, ขออนุญาตหัวหน้าแล้ว, สลับเวรวันเสาร์..."
+            placeholder="บันทึกเพิ่มเติม"
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
             className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-gray-850 text-sm focus:border-blue-500 focus:outline-none min-h-[70px]"
