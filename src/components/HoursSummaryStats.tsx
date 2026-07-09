@@ -373,7 +373,7 @@ export default function HoursSummaryStats({ shifts, trades, onClearAll, currentM
   // --- Advanced Cache Reset ---
   const handleClearCache = (e: React.FormEvent) => {
     e.preventDefault();
-    if (confirmCode === '123456789') {
+    if (confirmCode === '123456') {
       setIsCleared(true);
       setTimeout(() => {
         onClearAll();
@@ -956,7 +956,7 @@ export default function HoursSummaryStats({ shifts, trades, onClearAll, currentM
           onClick={() => setShowConfirmModal(true)}
           className="w-full bg-rose-600 hover:bg-rose-700 text-white py-2.5 rounded-xl font-bold text-xs shadow-sm cursor-pointer transition-colors"
         >
-          🗑️ ลบแคชและคุกกี้ระบบ
+          🗑️ ล้าง local storage
         </button>
       </div>
 
@@ -985,7 +985,7 @@ export default function HoursSummaryStats({ shifts, trades, onClearAll, currentM
                   <label className="text-gray-700 text-[11px] font-semibold">กรอกรหัสยืนยันตัวตนเพื่อลบข้อมูล</label>
                   <input
                     type="password"
-                    placeholder="รหัสผ่านผู้ดูแลระบบ (123456789)"
+                    placeholder="รหัสผ่านผู้ดูแลระบบ (123456)"
                     value={confirmCode}
                     onChange={(e) => setConfirmCode(e.target.value)}
                     className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-800 text-sm focus:border-rose-500 focus:outline-none"
