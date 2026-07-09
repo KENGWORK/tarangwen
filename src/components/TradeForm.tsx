@@ -215,26 +215,83 @@ export default function TradeForm({ onAddTrade, currentMonth }: TradeFormProps) 
           </label>
           
           <div className="grid grid-cols-3 gap-2">
-            {POSITIONS.map((pos) => {
-              const isSelected = positionId === pos.id;
-              return (
-                <button
-                  key={pos.id}
-                  type="button"
-                  onClick={() => setPositionId(pos.id)}
-                  style={{ 
-                    backgroundColor: isSelected ? pos.color : '#f3f4f6',
-                    color: isSelected ? pos.textColor : '#4b5563',
-                    borderColor: isSelected ? 'transparent' : '#e5e7eb'
-                  }}
-                  className={`text-[11px] font-bold p-2.5 rounded-xl border text-center transition-all shadow-sm cursor-pointer ${
-                    isSelected ? 'ring-2 ring-blue-600/20 scale-95 shadow-md' : 'opacity-80 hover:opacity-100'
-                  }`}
-                >
-                  {pos.name}
-                </button>
-              );
-            })}
+            {/* Column 1: OPD */}
+            <div className="flex flex-col gap-1.5">
+              {['OPD_A', 'OPD_E3', 'OPD_O8'].map((id) => {
+                const pos = POSITIONS.find(p => p.id === id);
+                if (!pos) return null;
+                const isSelected = positionId === pos.id;
+                return (
+                  <button
+                    key={pos.id}
+                    type="button"
+                    onClick={() => setPositionId(pos.id)}
+                    style={{ 
+                      backgroundColor: isSelected ? pos.color : '#f3f4f6',
+                      color: isSelected ? pos.textColor : '#4b5563',
+                      borderColor: isSelected ? 'transparent' : '#e5e7eb'
+                    }}
+                    className={`text-[10px] font-bold p-2.5 rounded-xl border text-center transition-all shadow-sm cursor-pointer ${
+                      isSelected ? 'ring-2 ring-blue-600/20 scale-95 shadow-md' : 'opacity-80 hover:opacity-100'
+                    }`}
+                  >
+                    {pos.name}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Column 2: IPD (IPD, HM, MR) */}
+            <div className="flex flex-col gap-1.5">
+              {['IPD_IPD', 'IPD_HM', 'IPD_MR'].map((id) => {
+                const pos = POSITIONS.find(p => p.id === id);
+                if (!pos) return null;
+                const isSelected = positionId === pos.id;
+                return (
+                  <button
+                    key={pos.id}
+                    type="button"
+                    onClick={() => setPositionId(pos.id)}
+                    style={{ 
+                      backgroundColor: isSelected ? pos.color : '#f3f4f6',
+                      color: isSelected ? pos.textColor : '#4b5563',
+                      borderColor: isSelected ? 'transparent' : '#e5e7eb'
+                    }}
+                    className={`text-[10px] font-bold p-2.5 rounded-xl border text-center transition-all shadow-sm cursor-pointer ${
+                      isSelected ? 'ring-2 ring-blue-600/20 scale-95 shadow-md' : 'opacity-80 hover:opacity-100'
+                    }`}
+                  >
+                    {pos.name}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Column 3: IPD(Proud), IV, DIS */}
+            <div className="flex flex-col gap-1.5">
+              {['IPD_PROUD', 'IV', 'DIS'].map((id) => {
+                const pos = POSITIONS.find(p => p.id === id);
+                if (!pos) return null;
+                const isSelected = positionId === pos.id;
+                return (
+                  <button
+                    key={pos.id}
+                    type="button"
+                    onClick={() => setPositionId(pos.id)}
+                    style={{ 
+                      backgroundColor: isSelected ? pos.color : '#f3f4f6',
+                      color: isSelected ? pos.textColor : '#4b5563',
+                      borderColor: isSelected ? 'transparent' : '#e5e7eb'
+                    }}
+                    className={`text-[10px] font-bold p-2.5 rounded-xl border text-center transition-all shadow-sm cursor-pointer ${
+                      isSelected ? 'ring-2 ring-blue-600/20 scale-95 shadow-md' : 'opacity-80 hover:opacity-100'
+                    }`}
+                  >
+                    {pos.name}
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
           <div className="text-[10px] text-gray-500 flex items-center gap-1.5 bg-gray-50 p-2.5 rounded-lg border border-gray-100">
