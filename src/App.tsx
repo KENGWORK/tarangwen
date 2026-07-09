@@ -331,7 +331,7 @@ export default function App() {
             <div className="space-y-1.5 pt-1">
               <h4 className="text-xs font-bold text-gray-800 uppercase tracking-wider">รหัสผ่านยืนยันตัวตนล้างระบบ:</h4>
               <code className="bg-gray-50 text-gray-800 px-2.5 py-1.5 rounded-xl border border-gray-200 font-mono block text-center font-bold text-xs select-all">
-                123456789
+                123456
               </code>
             </div>
 
