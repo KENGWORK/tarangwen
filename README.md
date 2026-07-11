@@ -1,74 +1,75 @@
-# 🩺 ระบบจัดการและซื้อขายเวรเภสัชกร (Pharmacist Shift Trade Optimizer)
-
-ยินดีต้อนรับสู่ **ระบบจัดการและซื้อขายเวรเภสัชกร (Standalone Web App)** แพลตฟอร์มจัดการตารางเวรและการแลกเปลี่ยนเวรแบบครบวงจร ออกแบบและพัฒนาขึ้นมาเฉพาะทางสำหรับเภสัชกรและบุคลากรทางการแพทย์ เพื่อลดภาระงาน ความผิดพลาด และเพิ่มประสิทธิภาพในการสื่อสารการส่งต่อเวรปฏิบัติงาน
-
----
-
-## 🎯 วัตถุประสงค์ของแอปพลิเคชัน (Purpose)
-
-การจัดตารางเวรและการสลับเวร (Shift Trade) ในสายงานสาธารณสุขมีความซับซ้อนสูงมาก โดยเฉพาะตารางเวรของเภสัชกรที่มีการสลับ แลกเปลี่ยน ซื้อ หรือขายเวรอยู่ตลอดเวลา ซึ่งมักเกิดปัญหาตามมา เช่น:
-1. **การคำนวณชั่วโมงผิดพลาด**: ลืมหักลบชั่วโมงของเวรปฏิบัติงานที่ขายออกไป หรือคำนวณเวรที่ซื้อเข้ามาผิดส่งผลต่อภาระงานและค่าตอบแทน
-2. **ตารางเวรทับซ้อน (Shift Conflict)**: การซื้อหรือแลกเวรโดยไม่ได้ตรวจสอบตารางปฏิบัติงานเดิมอย่างละเอียด ทำให้ตารางเวลาชนกัน
-3. **การลืมขึ้นเวร**: ขาดการแจ้งเตือนและการบันทึกปฏิทินที่รวดเร็ว ทำให้เกิดการตกเวรส่งผลกระทบต่อผู้ป่วยและการทำงานของโรงพยาบาล
-
-**ระบบนี้จึงถูกสร้างขึ้นเพื่อเป็นเครื่องมือ Standalone ช่วยอำนวยความสะดวกในการกรอกเวรเดิม บันทึกธุรกรรมการซื้อขาย และวิเคราะห์แสดงผลลัพธ์เป็นปฏิทินปฏิบัติงานสุทธิ (Net Schedule) พร้อมสถิติตัวเลขชั่วโมงการทำงานที่อัปเดตแบบเรียลไทม์**
+# 🩺 Pharmacist Shift Trade Optimizer (PSTO)
+### *A Sophisticated, High-Precision Scheduling & Exchange Framework for Clinical Operations*
 
 ---
 
-## 💡 ประโยชน์ที่ได้รับจากระบบ (Key Benefits)
+## 🎯 Executive Overview & Purpose
 
-*   **ป้องกันความผิดพลาด 100%**: ระบบคำนวณการเปลี่ยนแปลงเวรแบบอัตโนมัติ โดยทำการตัดเวรที่ขายออก และเพิ่มเวรที่ซื้อเข้ามาในตารางสุทธิให้อย่างถูกต้องทันที
-*   **แสดงผลเปรียบเทียบชัดเจน (Before & After)**: มีแท็บเปรียบเทียบ "ตารางเดิม" และ "ตารางจริง" ช่วยให้ตรวจสอบความถูกต้องได้อย่างง่ายดาย
-*   **ระบบจำลองการแจ้งเตือนแบบเรียลไทม์ (Push Notification Simulation)**: ระบบเสียงแจ้งเตือนและกล่องข้อความเตือนสไตล์ iOS เพื่อยืนยันทุกธุรกรรมสำเร็จลุล่วง
-*   **คำนวณภาระงานเป็นกราฟสถิติ**: มีการวิเคราะห์สรุปจำนวนชั่วโมงที่ทำงานจริงเทียบกับเป้าหมายจำแนกตามประเภทของตำแหน่งปฏิบัติงาน
-*   **สะดวกและรวดเร็วสำหรับการส่งต่อ**: ระบบสนับสนุนการดาวน์โหลดปฏิทินลงมือถือจริง และรองรับการหมุนจอมุมมองปฏิทินเป็น **"แนวนอนเต็มจอ" (Fullscreen Landscape)** สะดวกต่อการแคปภาพหน้าจอส่งต่อทางแอปพลิเคชันแชทกลุ่ม
+Within modern healthcare ecosystems, the orchestration of clinical rosters demands absolute precision. Pharmacists play a pivotal role in patient safety and operational continuity, yet the administrative overhead of coordinating shift schedules, emergency substitutions, and reciprocal shift trading (buying and selling) often introduces severe friction. 
 
----
+Traditional methodologies—such as unstructured chat group negotiations or manual spreadsheets—frequently result in:
+*   **Operational Discrepancies**: Overlooking hour balances or miscalculating net-duty contributions.
+*   **Schedule Collisions**: Erroneously accepting trades that overlap with pre-allocated shifts.
+*   **Administrative Bottlenecks**: Delayed approvals, poor logging of historical transactions, and misaligned handovers.
 
-## 🛠️ ฟังก์ชันการทำงานและการใช้งานอย่างละเอียด (Detailed Core Features)
-
-ระบบประกอบไปด้วย 6 แท็บการทำงานหลัก ที่สอดประสานกันอย่างเป็นระบบ:
-
-### 1. แท็บกรอกเวร (Trade Entry)
-*   **หน้าที่**: บันทึกรายการ "ซื้อเวรเพิ่ม" หรือ "ขายเวรออก" 
-*   **วิธีใช้งาน**:
-    1.  เลือกประเภทรายการว่าเป็นการ **ซื้อเวร** หรือ **ขายเวร**
-    2.  ใส่วันที่และระบุช่วงเวลาเวร (เช่น `7-16`, `16-24` หรือเวลากลางคืน)
-    3.  เลือกประเภทตำแหน่งปฏิบัติงาน (เช่น `OPD(A)`, `IPD(HM)`, `IV`, `DIS` เป็นต้น)
-    4.  กรอกชื่อเภสัชกรคู่ค้า (Partner) ที่เราแลกเปลี่ยนเวรด้วย
-    5.  (ตัวเลือกเพิ่มเติม) เปิดใช้ฟังก์ชันแจ้งเตือนผ่าน Outlook เพื่อรับลิงก์ดราฟต์อีเมลแจ้งหัวหน้างาน
-    6.  กดปุ่ม **"บันทึกรายการ"** ข้อมูลจะวิ่งไปอัปเดตตารางสุทธิทันที
-
-### 2. แท็บตั้งค่าเวร (Schedule Setup)
-*   **หน้าที่**: อิมพอร์ตและบันทึกตารางเวรหลัก (Original Schedule) ประจำเดือนของเรา
-*   **วิธีใช้งาน**:
-    *   เลือกวันที่ เลือกตำแหน่งระบุเวลาปฏิบัติงาน แล้วกดเพิ่มเวรตั้งต้นของคุณทีละเวร หรือกดเคลียร์เพื่อสร้างใหม่ทั้งหมด
-
-### 3. แท็บตารางเดิม (Before Dashboard)
-*   **หน้าที่**: แสดงผลปฏิทินเวรดั้งเดิมก่อนมีการซื้อขายเวรใดๆ เพื่อใช้อ้างอิงตารางแรกเริ่มที่หัวหน้างานประกาศ
-*   **วิธีใช้งาน**: คลิกเลือกแต่ละวันเพื่อดูรายละเอียดตำแหน่งและเวลาเวรด้านล่าง
-
-### 4. แท็บตารางจริง (After Dashboard)
-*   **หน้าที่**: **"หัวใจหลักของแอปพลิเคชัน"** แสดงผลปฏิทินสุทธิหลังจากหักลบเวรที่ขายออก และบวกเพิ่มเวรที่ซื้อเข้ามาแล้ว
-*   **คุณสมบัติพิเศษ**:
-    *   **ขยายแนวนอนเต็มหน้าจอ (Fullscreen Landscape)**: กดปุ่มขยายปฏิทินที่มุมขวาบน จะปรากฏหน้าต่างโปรแกรมเต็มจอ และหากใช้งานบนสมาร์ทโฟนหรือแท็บเล็ต คุณสามารถคลิก **"หมุนจอแนวนอน" (🔄 Rotate)** เพื่อพลิกตารางเวรให้อยู่ในแนวนอนแบบเต็มตา ช่วยให้เห็นตัวย่อเวรทั้งหมดได้พร้อมกัน ถ่ายรูปหน้าจอส่งให้ผู้ร่วมงานได้อย่างง่ายดาย!
-    *   แสดงรหัสสีและจุดสัญลักษณ์ระบุสถานะชัดเจน (สีเขียว = ซื้อเวรเพิ่มสำเร็จ, สีแดง = ขายเวรออกสำเร็จ)
-
-### 5. แท็บสรุปเวร (Trade Summary)
-*   **หน้าที่**: แสดงรายการธุรกรรมซื้อขายเวรทั้งหมดในเดือนนั้นๆ เรียงลำดับตามประวัติ
-*   **วิธีใช้งาน**: สามารถตรวจสอบ ค้นหา และกดลบธุรกรรมที่ป้อนผิดพลาดออกได้ทันที
-
-### 6. แท็บสรุปชั่วโมง (Hours & Statistics)
-*   **หน้าที่**: แสดงผลวิเคราะห์การกระจายชั่วโมงการทำงานของคุณ
-*   **วิธีใช้งาน**: ดูแผนภูมิสรุปชั่วโมงเวรสะสม, สถิติชั่วโมงรวมสุทธิที่ต้องทำปฏิบัติงานจริงในเดือน และมีปุ่มล้างระบบข้อมูลสำรองทั้งหมด (Reset System) โดยต้องกรอกรหัสผ่าน `123456` เพื่อความปลอดภัย
+The **Pharmacist Shift Trade Optimizer (PSTO)** is a standalone, precision-engineered digital workstation designed to harmonize shift trading. By integrating robust schedule initialization, transaction accounting, and dynamic hour analytics, PSTO translates complex trading histories into an uncompromised, real-time **Net Operational Schedule (After-Trade)**. 
 
 ---
 
-## 📲 วิธีทดลองใช้งานและจำลองการเทรดเวร (Simulation Tutorial)
+## 💡 Key Architectural & Strategic Benefits
 
-หากคุณต้องการเรียนรู้การกดใช้งาน และอยากลองสัมผัสสถานการณ์จำลองแบบสเต็ปบายสเต็ป สามารถเปิดไฟล์จำลองพิเศษที่เตรียมไว้ให้ได้ที่:
-👉 **[ระบบจำลองสอนการใช้งาน ShiftTrade.html](./public/ShiftTrade.html)** (หรือเปิดเข้าใช้งานทางลิงก์ด่วนบนหน้าจอเว็บแอปได้ทันที!)
+*   **Algorithmic Verification**: Automatically subtracts discharged shifts and appends newly acquired duty hours, eliminating manual tallying and bookkeeping errors.
+*   **Comparative Visibility (Before vs. After)**: Features dual-mode dashboards to instantly cross-reference initial team assignments against active operational reality.
+*   **Immersive Landscape Interface**: Designed with a responsive **Fullscreen Landscape Calendar Mode** featuring full device rotation capability. This allows clinicians to easily capture high-density calendar sheets for team distribution.
+*   **Tactile Feedback & iOS-inspired Alerts**: Integrates precise localized audio indicators and fluid screen transitions to validate successful transactions immediately.
+*   **Professional Abbreviation Indexing**: Employs standardized color-coded keys (e.g., `OPD(A)`, `IPD(HM)`, `IV`, `DIS`) for effortless cognitive scannability on high-density calendar displays.
 
 ---
 
-*ระบบงานพัฒนาขึ้นเพื่อความรวดเร็ว ปลอดภัย และแม่นยำในการบริหารเวรของแพทย์ พยาบาล และเภสัชกรอย่างมืออาชีพ*
+## 🛠️ Comprehensive Module Breakdown
+
+The application is structured into specialized, cohesive interfaces designed to operate with absolute clarity:
+
+### 1. Shift Transaction Portal (Trade Entry)
+*   **Function**: Facilitates the secure logging of "Buy" (Acquire Shift) and "Sell" (Relinquish Shift) transactions.
+*   **Operational Protocol**:
+    1.  Designate transaction polarity (**Buy** or **Sell**).
+    2.  Select the desired operational date and specify the respective shift time-block.
+    3.  Assign the specialized position classification (e.g., `OPD(A)`, `IPD(HM)`, etc.).
+    4.  Input the counterparty pharmacist's name to ensure cryptographic-level handover accountability.
+    5.  *(Optional)* Enable Outlook integration to auto-generate official draft request templates for supervisor sign-off.
+    6.  Execute **"Save Transaction"** to instantaneously re-compile the Net Schedule.
+
+### 2. Base Roster Initialization (Schedule Setup)
+*   **Function**: Establishes the baseline operational schedule (Original Roster) as officially decreed by administrative heads.
+*   **Operational Protocol**: Populate calendar dates with pre-allocated positions to define the baseline dataset prior to any peer-to-peer trading.
+
+### 3. Baseline Perspective (Before Dashboard)
+*   **Function**: Houses the historical, unaltered administrative roster for auditability.
+*   **Operational Protocol**: Select any day-cell to view initial position duties and shift limits, preserving the integrity of the original monthly layout.
+
+### 4. Active Operational State (After Dashboard)
+*   **Function**: **The core analytical engine of PSTO.** Renders the net-duty output by applying active trade adjustments to the baseline dataset.
+*   **Specialized Features**:
+    *   **Dual-State Grid**: Displays real-time indicators for altered shifts (Green markers for acquired hours, Red indicators for relinquished hours).
+    *   **Fullscreen Mode**: Expands the calendar canvas into an immersive view.
+    *   **Dynamic Rotation (🔄)**: Rotates the display coordinates to landscape layout on any screen aspect ratio, permitting detailed side-by-side shift observation.
+
+### 5. Transaction Ledger (Trade Summary)
+*   **Function**: Maintains a chronological, immutable audit log of all peer-to-peer exchanges registered during the active month.
+*   **Operational Protocol**: Clinicians can inspect historical logs, trace counterparty handovers, or securely purge incorrect transaction entries.
+
+### 6. Analytics & System Governance (Hours & Statistics)
+*   **Function**: Delivers macro-level statistical summaries regarding duty-hour distribution and work-to-target alignment.
+*   **Operational Protocol**:
+    *   Monitors hours worked per position in a beautiful visual chart.
+    *   Tracks shift delta (original vs. net hours worked).
+    *   Provides secure system administration (Resetting the system database requires a localized security passcode: `123456`).
+
+---
+
+## 📲 System Standards & Design Philosophy
+
+The PSTO aesthetic adheres to a **refined light-canvas design philosophy**. By leveraging soft slate gray backgrounds, deep high-contrast charcoal typography, and vibrant position-specific colors, it presents clinical data without sensory overload. 
+
+*Designed and engineered to uphold the highest standards of clinical scheduling integrity at Bangkok Hospital Pattaya (BPH) Pharmacy Department.*
