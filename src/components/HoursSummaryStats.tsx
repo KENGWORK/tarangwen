@@ -494,7 +494,7 @@ export default function HoursSummaryStats({ shifts, trades, onClearAll, currentM
           <div className="flex justify-between items-start border-b border-gray-100 pb-3">
             <div>
               <h3 className="text-xs font-bold text-gray-500 uppercase tracking-widest flex items-center gap-1.5">
-                📅 ปฏิทินวันหยุดราชการ / บริษัท
+                📅 ปฏิทินวันหยุด / คีย์ VAC
               </h3>
               <p className="text-[10px] text-gray-400 mt-0.5">
                 คลิกเลือกวันหยุดในเดือนนี้ เพื่อรับเครดิตชั่วโมงทำงานเพิ่ม (+8 ชม. ต่อวัน)
@@ -782,7 +782,7 @@ export default function HoursSummaryStats({ shifts, trades, onClearAll, currentM
                   </span>
                 </div>
                 <div className="flex justify-between pl-1">
-                  <span className="text-gray-500">ค่าเวรดึกคร่อม ตี 2 ({nightShiftCount} เวร × ฿1,000):</span>
+                  <span className="text-gray-500">ค่าเวรดึก ({nightShiftCount} เวร × ฿1,000):</span>
                   <span className="font-mono font-bold text-emerald-700">
                     +฿{nightShiftBonus.toLocaleString()}
                   </span>
@@ -794,7 +794,7 @@ export default function HoursSummaryStats({ shifts, trades, onClearAll, currentM
                   </span>
                 </div>
                 <div className="flex justify-between border-t border-emerald-500/5 pt-1 pl-1 font-bold text-emerald-900">
-                  <span>รวมรายรับพึงได้:</span>
+                  <span>รวมรายรับ:</span>
                   <span className="font-mono">฿{totalGrossIncome.toLocaleString()}</span>
                 </div>
               </div>
@@ -824,7 +824,7 @@ export default function HoursSummaryStats({ shifts, trades, onClearAll, currentM
 
               {/* สรุปสุทธิ */}
               <div className="border-t border-emerald-500/15 pt-1.5 mt-2 flex justify-between items-center">
-                <span className="text-xs font-black text-emerald-900">รายรับสุทธิหลังหักรายการ:</span>
+                <span className="text-xs font-black text-emerald-900">รายรับสุทธิ:</span>
                 <span className="text-lg font-black text-emerald-600 font-mono">
                   ฿{netIncome.toLocaleString()}
                 </span>
@@ -842,7 +842,7 @@ export default function HoursSummaryStats({ shifts, trades, onClearAll, currentM
         <div className="bg-white p-4 rounded-3xl border border-gray-100 shadow-sm space-y-3 flex flex-col justify-between">
           <div>
             <h4 className="text-xs font-bold text-gray-500 uppercase tracking-widest border-b border-gray-100 pb-2 flex items-center gap-1.5">
-              📊 รายละเอียดชั่วโมงปฏิบัติงานสุทธิ
+              📊 รายละเอียดชั่วโมงปฏิบัติงาน
             </h4>
 
             <div className="space-y-2.5 mt-3">
@@ -857,7 +857,7 @@ export default function HoursSummaryStats({ shifts, trades, onClearAll, currentM
               <div className="flex justify-between items-center border-t border-gray-50 pt-2">
                 <div className="flex items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
-                  <p className="text-[11px] text-emerald-700">ชั่วโมงรับซื้อเวรเพิ่มเติม (+)</p>
+                  <p className="text-[11px] text-emerald-700">จำนวนชั่วโมงที่ซื้อเวร (+)</p>
                 </div>
                 <p className="text-xs font-bold text-emerald-600 font-mono">+{totalBoughtHours} ชม.</p>
               </div>
@@ -865,7 +865,7 @@ export default function HoursSummaryStats({ shifts, trades, onClearAll, currentM
               <div className="flex justify-between items-center border-t border-gray-50 pt-2">
                 <div className="flex items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-rose-500" />
-                  <p className="text-[11px] text-rose-700">ชั่วโมงปล่อยขายเวรออก (-)</p>
+                  <p className="text-[11px] text-rose-700">จำนวนชั่วโมงที่ขายเวรออก (-)</p>
                 </div>
                 <p className="text-xs font-bold text-rose-500 font-mono">-{totalSoldHours} ชม.</p>
               </div>
@@ -873,7 +873,7 @@ export default function HoursSummaryStats({ shifts, trades, onClearAll, currentM
               <div className="flex justify-between items-center border-t border-gray-50 pt-2">
                 <div className="flex items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-red-500" />
-                  <p className="text-[11px] text-red-600">เครดิตวันหยุดชดเชยทำงานจริง (+)</p>
+                  <p className="text-[11px] text-red-600">วันหยุดชดเชย+คีย์VAC (+)</p>
                 </div>
                 <p className="text-xs font-bold text-red-500 font-mono">+{holidayCount * 8} ชม.</p>
               </div>
@@ -881,7 +881,7 @@ export default function HoursSummaryStats({ shifts, trades, onClearAll, currentM
               <div className="flex justify-between items-center border-t border-gray-50 pt-2">
                 <div className="flex items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-indigo-500" />
-                  <p className="text-[11px] text-indigo-700">เวรดึกที่คร่อมเวลา ตี 2 (+1,000 บาท/เวร)</p>
+                  <p className="text-[11px] text-indigo-700">เวรดึก (+1,000 บาท/เวร)</p>
                 </div>
                 <p className="text-xs font-bold text-indigo-600 font-mono">{nightShiftCount} เวร</p>
               </div>
